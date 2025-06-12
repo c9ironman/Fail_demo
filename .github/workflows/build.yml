@@ -35,29 +35,3 @@ jobs:
       with:
         name: app-release
         path: NetWarriorLauncher/app/build/outputs/apk/release/*.apk
-        
-    - name: Send success email
-      if: success()
-      uses: dawidd6/action-send-mail@v3
-      with:
-        server_address: smtp.gmail.com
-        server_port: 587
-        username: ${{ secrets.EMAIL_USERNAME }}
-        password: ${{ secrets.EMAIL_PASSWORD }}
-        subject: "✅ APK Build Success - NetWarriorLauncher"
-        body: "The APK was successfully built!"
-        to: your-email@company.com
-        from: your-email@company.com
-        
-    - name: Send failure email
-      if: failure()
-      uses: dawidd6/action-send-mail@v3
-      with:
-        server_address: smtp.gmail.com
-        server_port: 587
-        username: ${{ secrets.EMAIL_USERNAME }}
-        password: ${{ secrets.EMAIL_PASSWORD }}
-        subject: "❌ APK Build Failed - NetWarriorLauncher"
-        body: "The build failed. Check the GitHub Actions logs."
-        to: your-email@company.com
-        from: your-email@company.com
