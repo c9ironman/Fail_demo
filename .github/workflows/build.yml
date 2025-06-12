@@ -21,16 +21,20 @@ jobs:
         distribution: 'temurin'
         
     - name: Make gradlew executable
-      run: chmod +x gradlew
+      run: |
+        cd NetWarriorLauncher
+        chmod +x gradlew
       
     - name: Build APK
-      run: ./gradlew assembleRelease
+      run: |
+        cd NetWarriorLauncher
+        ./gradlew assembleRelease
       
     - name: Upload APK
       uses: actions/upload-artifact@v4
       with:
         name: app-release
-        path: app/build/outputs/apk/release/*.apk
+        path: NetWarriorLauncher/app/build/outputs/apk/release/*.apk
         
     - name: Send success email
       if: success()
