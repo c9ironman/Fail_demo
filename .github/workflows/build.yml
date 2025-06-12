@@ -18,6 +18,15 @@ jobs:
         java-version: '11'
         distribution: 'temurin'
         
+    - name: Debug - List repository contents
+      run: |
+        echo "Current directory:"
+        pwd
+        echo "Repository contents:"
+        ls -la
+        echo "Looking for gradlew specifically:"
+        find . -name "gradlew*" -type f
+        
     - name: Make gradlew executable
       run: chmod +x gradlew
       
